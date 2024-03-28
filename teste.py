@@ -2,6 +2,7 @@ import yt_dlp as ydl
 from utilities import utilitarios_ytdlp as uydl
 from utilities import utilitarios_os as uos
 
+
 #help(ytp)
 
 try:
@@ -30,7 +31,7 @@ except ydl.DownloadError as derr:
 
 #uos.retornar_arquivos("C:/Users/yagos/Music/MusicasYago")
 
-cam = str(input("Digite o caminho: "))
+#cam = str(input("Digite o caminho: "))
 '''opcao = str(input("Digite uma opção: "))
 
 if uos.criar_pasta_usuario(cam, opcao):
@@ -38,7 +39,9 @@ if uos.criar_pasta_usuario(cam, opcao):
 else:
     print("erro")'''
     
-if uos.criar_pasta_programa(cam):
+'''if uos.criar_pasta_programa():
     print("Pasta criada")
 else:
-    print("erro")
+    print("erro")'''
+
+#uos.verificar_caminho_existe()

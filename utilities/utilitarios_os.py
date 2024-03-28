@@ -1,9 +1,9 @@
 import os
 
 
-def criar_pasta_programa(caminho):
-    raiz = f"{caminho}/Audivio/Downloads"
-    lista = ['Audivio Videos', 'Audivio Audios']
+def criar_pasta_programa():
+    raiz = "C:/AudiVio/Downloads"
+    lista = ['AudiVio Videos', 'AudiVio Audios']
     try:
         for dire in lista:
             path = os.path.join(raiz, dire)
@@ -12,6 +12,7 @@ def criar_pasta_programa(caminho):
     
     except OSError as oerr:
         print(f"Erro: {oerr}")
+        return False
 
 def criar_pasta_usuario(caminho, nome_pasta):
     try: 
@@ -19,6 +20,21 @@ def criar_pasta_usuario(caminho, nome_pasta):
         return True
     except OSError:
         return False
+    
+def verificar_caminho_existe():
+    if os.path.exists("C:/AudiVio/Downloads"):
+        return True
+    else:
+        return False
+
+def salvar_pastas_certas(tipo):
+    if verificar_caminho_existe():
+        if tipo == "Vídeo":
+            return "C:/AudiVio/Downloads/AudiVio Videos"
+        elif tipo == "Música":
+            return "C:/AudiVio/Downloads/AudiVio Audios"
+    else:
+        return 
 
 def retornar_arquivos(caminho):
     try:
