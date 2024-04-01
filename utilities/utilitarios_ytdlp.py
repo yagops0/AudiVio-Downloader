@@ -50,7 +50,7 @@ def baixar_musica(url, caminho):
         audio.download([url])
 
 
-def baixar_playlist_videos(url_playlist, caminho):
+'''def baixar_playlist_videos(url_playlist, caminho):
     ydl_opts = {
         'format' : 'mp4/bestvideo+bestaudio/best',
         'outtmpl' : f'{caminho}/%(title)s.%(ext)s',
@@ -58,7 +58,7 @@ def baixar_playlist_videos(url_playlist, caminho):
     }
     
     with ydl.YoutubeDL(ydl_opts) as playlist_video:
-        playlist_video.download([url_playlist])
+        playlist_video.download([url_playlist])'''
 
 
 '''def baixar_playlist_musicas(url_playlist, caminho):
