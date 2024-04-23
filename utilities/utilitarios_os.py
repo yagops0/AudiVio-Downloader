@@ -27,7 +27,7 @@ def verificar_caminho_existe():
     else:
         return False
 
-def salvar_pastas_certas(tipo):
+def salvar_pastas_certas(tipo : str):
     if verificar_caminho_existe():
         if tipo == "Vídeo":
             return "C:/AudiVio/Downloads/AudiVio Videos"
