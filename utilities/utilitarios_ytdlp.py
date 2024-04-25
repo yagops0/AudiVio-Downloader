@@ -6,7 +6,7 @@ def baixar_video(url, caminho, resolucao):
         if resolucao == "360": # SD
             ydl_opts = {
                 'format' : f'mp4/bestvideo[height<=360]+bestaudio[height<=360]/best',
-                'outtmpl' : f'{caminho}\\%(title)s.%(ext)s'
+                'outtmpl' : f'{caminho}/%(title)s.%(ext)s'
             }
             
             with ydl.YoutubeDL(ydl_opts) as video:
@@ -15,7 +15,7 @@ def baixar_video(url, caminho, resolucao):
         elif resolucao == "720": # HD
             ydl_opts = {
                 'format' : f'mp4/bestvideo[height<=720]+bestaudio[height<=720]/best',
-                'outtmpl' : f'{caminho}\\%(title)s.%(ext)s'
+                'outtmpl' : f'{caminho}/%(title)s.%(ext)s'
             }
             
             with ydl.YoutubeDL(ydl_opts) as video:
@@ -24,7 +24,7 @@ def baixar_video(url, caminho, resolucao):
         elif resolucao == "1080": # FULL HD
             ydl_opts = {
                 'format' : f'mp4/bestvideo[height<=1080]+bestaudio[height<=1080]/best',
-                'outtmpl' : f'{caminho}\\%(title)s.%(ext)s'
+                'outtmpl' : f'{caminho}/%(title)s.%(ext)s'
             }
             
             with ydl.YoutubeDL(ydl_opts) as video:
@@ -45,7 +45,7 @@ def baixar_musica(url, caminho):
             'preferredquality' : '192'
         }],
         'ignoreerrors' : True,
-        'outtmpl' : f'{caminho}\\%(title)s.%(ext)s'
+        'outtmpl' : f'{caminho}/%(title)s.%(ext)s'
     }
     
     with ydl.YoutubeDL(ydl_opts) as audio:

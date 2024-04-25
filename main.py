@@ -13,41 +13,43 @@ def main(page : ft.Page):
         criar_pasta = uos.criar_pasta_usuario(txtField_caminho_usuario.value, txtField_nome_pasta.value)
         if not txtField_caminho_usuario.value:
             txtField_caminho_usuario.error_text = "Por favor escolha o caminho"
-        if not txtField_nome_pasta.value:
-            txtField_nome_pasta.error_text = "Por favor digite o nome da pasta"
         else:
-            if criar_pasta:
+            if not txtField_nome_pasta.value:     
+                txt_diretorio.value = f"Downloads em: {txtField_caminho_usuario.value}"
+            else:
                 txt_diretorio.value = f"Downloads em: {txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}"
                 
         page.update()
         
-    def on_click_programa(e):
-        criar_pasta = uos.criar_pasta_programa()
-        if criar_pasta:
-            txt_diretorio.value = f"Downloads em: C:\\Audivio\\Downloads"
-        
-        
-        page.update()
-    
     def on_click_sd(e):
         if btn_continuar.data:
             if uydl.baixar_video(txtField_colar_url.value, f"{txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}", "360"):
                 print("Download concluído")
-        elif btn_app.data:
-            if uydl.baixar_video(txtField_colar_url.value, "C:\\Audivio\\Downloads\\Audivio Videos", "360"):
-                print("Download concluído")
     
     def on_click_hd(e):
-        pass
+        if btn_continuar.data:
+            if uydl.baixar_video(txtField_colar_url.value, f"{txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}", "720"):
+                print("Donwloada HD.")
+
+    def on_click_full_hd(e):
+        if btn_continuar.data:
+            if uydl.baixar_video(txtField_colar_url.value, f"{txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}", "1080"):
+                print("Donwload FULL HD.")
     
     def on_click_musica(e):
-        pass
+        if btn_continuar.data:
+            if uydl.baixar_musica(txtField_colar_url.value, f"{txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}"):
+                print("Musica baixada.")
     
     def on_click_playlist_musica(e):
-        pass
+        if btn_continuar.data:
+            if uydl.baixar_musica(txtField_colar_url.value, f"{txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}"):
+                print("Playlist baixada.")
     
     def on_click_playlist_video(e):
-        pass
+        if btn_continuar.data:
+            if uydl.baixar_video(txtField_colar_url.value, f"{txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}", "1080"):
+                print("Playlist video baixada.")
     
     def cancelar_modal(e):
         alert_erro.open = False
@@ -72,7 +74,7 @@ def main(page : ft.Page):
     )
     
     txtField_nome_pasta = ft.TextField(
-        label="Digite o nome na pasta"
+        label="Digite o nome na pasta(caso não queira criar uma pasta, não é necessário colocar um nome)"
     )
     
     txtField_colar_url = ft.TextField(
@@ -85,38 +87,35 @@ def main(page : ft.Page):
         on_click=on_click_usuario, data=True
     )
     
-    txt_ou = ft.Text(
-        value="OU"
-    )
-    
-    btn_app = ft.ElevatedButton(
-        "Deixar que o programa crie a pasta",
-        on_click=on_click_programa, data=True
-    )
-    
+
     btn_sd = ft.ElevatedButton(
         "SD",
         on_click=on_click_sd
     )
     
     btn_hd = ft.ElevatedButton(
-        "HD"
+        "HD",
+        on_click=on_click_hd
     )
     
     btn_full_hd = ft.ElevatedButton(
-        "FULL HD"
+        "FULL HD",
+        on_click=on_click_full_hd
     )
     
     btn_musica = ft.ElevatedButton(
-        ".MP3"
+        ".MP3", 
+        on_click=on_click_musica
     )
     
     btn_playlist_musica = ft.ElevatedButton(
-        "Playlist Música"    
+        "Playlist Música",
+        on_click=on_click_playlist_musica    
     )
     
     btn_playlist_video = ft.ElevatedButton(
-        "Playlist Vídeo"
+        "Playlist Vídeo",
+        on_click=on_click_playlist_video
     )
     
     pb_download = ft.ProgressBar(width=500)
@@ -141,8 +140,6 @@ def main(page : ft.Page):
         txtField_caminho_usuario,
         txtField_nome_pasta,
         btn_continuar,
-        txt_ou,
-        btn_app,
         txt_diretorio,
         txtField_colar_url,
         btn_sd,
@@ -150,7 +147,8 @@ def main(page : ft.Page):
         btn_full_hd,
         btn_musica,
         btn_playlist_musica,
-        btn_playlist_video
+        btn_playlist_video,
+        pb_download
     )
     
     

@@ -1,6 +1,4 @@
-import yt_dlp as ydl
-from utilities import utilitarios_ytdlp as uydl
-from utilities import utilitarios_os as uos
+
 
 
 #help(ytp)
@@ -134,5 +132,30 @@ else:
 
 #? teste
 
-uydl.baixar_musica("https://soundcloud.com/brxxk3/takemenowheredemo", "C:\\Users\\yagos\\Music\\MusicasYago")
+# uydl.baixar_musica("https://www.youtube.com/watch?v=j1_HaVIqgZo", "C:\\Users\\yagos\\Music\\MusicasYago")
 
+
+import yt_dlp as ydl
+from utilities import utilitarios_ytdlp as uydl
+from utilities import utilitarios_os as uos
+import flet as ft
+
+# def main(page : ft.Page):
+#     def on_dialog_result(e : ft.FilePickerResultEvent):
+        
+    
+    
+#     file_picker = ft.FilePicker(on_result=on_dialog_result)
+#     page.overlay.append(file_picker)
+#     page.update()
+    
+#     btn_teste = ft.ElevatedButton(
+#         "escolher caminho...",
+#         on_click=file_picker.pick_files,
+#         icon=ft.icons.FOLDER
+        
+#     )
+    
+#     page.update()
+
+# ft.app(target=main)
