@@ -134,12 +134,6 @@ else:
 
 # uydl.baixar_musica("https://www.youtube.com/watch?v=j1_HaVIqgZo", "C:\\Users\\yagos\\Music\\MusicasYago")
 
-
-import yt_dlp as ydl
-from utilities import utilitarios_ytdlp as uydl
-from utilities import utilitarios_os as uos
-import flet as ft
-
 # def main(page : ft.Page):
 #     def on_dialog_result(e : ft.FilePickerResultEvent):
         
@@ -159,3 +153,21 @@ import flet as ft
 #     page.update()
 
 # ft.app(target=main)
+
+
+import yt_dlp
+
+def progress_hook(d):
+    if d['status'] == 'downloading':
+        print(f"Baixando: {d['_percent_str']} do vídeo {d['filename']} ({d['_speed_str']})")
+
+ydl_opts = {
+    'progress_hooks': [progress_hook]
+}
+
+# URL do vídeo que você deseja baixar
+video_url = 'https://www.youtube.com/watch?v=pssWSj42t8M'
+
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download([video_url])
+

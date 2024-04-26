@@ -1,4 +1,5 @@
 import flet as ft
+from time import sleep
 from utilities import utilitarios_ytdlp as uydl
 from utilities import utilitarios_os as uos
 
@@ -50,6 +51,7 @@ def main(page : ft.Page):
         if btn_continuar.data:
             if uydl.baixar_video(txtField_colar_url.value, f"{txtField_caminho_usuario.value}\\{txtField_nome_pasta.value}", "1080"):
                 print("Playlist video baixada.")
+    
     
     def cancelar_modal(e):
         alert_erro.open = False
@@ -118,12 +120,7 @@ def main(page : ft.Page):
         on_click=on_click_playlist_video
     )
     
-    pb_download = ft.ProgressBar(width=500)
     
-    conteudo_pb = ft.Column([
-        ft.Text("Fazendo o download..."),
-        pb_download
-    ])
     
     alert_erro = ft.AlertDialog(
             modal=True,
@@ -148,9 +145,7 @@ def main(page : ft.Page):
         btn_musica,
         btn_playlist_musica,
         btn_playlist_video,
-        pb_download
     )
-    
     
     page.update()
 
